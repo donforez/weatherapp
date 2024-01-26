@@ -40,20 +40,38 @@ const onEnterSubmit = event => {
         fadeInOut();
         let query = viewElems.searchInput.value; 
         getWeatherByCity(query).then(data => {
-            console.log(data);
-            switchView();
-            fadeInOut();
+            displayWeatherData(data);
         });
     }
 };
 
 const onClickSubmit = () => {
+    fadeInOut();
     let query = viewElems.searchInput.value; 
     getWeatherByCity(query).then(data => {
-        console.log(data);
-        switchView();
+        displayWeatherData(data);
     });
 };
+
+const displayWeatherData = data => {
+    switchView();
+    fadeInOut()
+
+    const weather = data.current;
+    const forecast = data.forecast.forecastday[0].day;
+    
+    viewElems.weatherCity.innerText = data.location.name;
+    viewElems.weatherIcon.src = data.current.condition.icon;
+    viewElems.weatherIcon.alt = weather.condition.text;
+
+    const currTemp = weather.temp_c;
+    const maxTemp = forecast.maxtemp_c;
+    const minTemp = forecast.mintemp_c;
+
+    viewElems.weatherCurrentTemp.innerText = `Current temperature: ${currTemp}°C`;
+    viewElems.weatherMaxTemp.innerText = `Max temperature: ${maxTemp}°C`;
+    viewElems.weatherMinTemp.innerText = `Min temperature: ${minTemp}°C`;
+}
 
 const fadeInOut = () => {
     if (viewElems.mainContainer.style.opacity === '1' || viewElems.mainContainer.style.opacity === '') {
