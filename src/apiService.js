@@ -7,6 +7,6 @@ export const getWeatherByCity = city => {
         const country = data.location.country;
         return fetch(
             `http://api.weatherapi.com/v1/forecast.json?key=54bfc316749741d3bbe233723242501&q=${country}`
-        ).then(resp => resp.json()).then(data => data)
+        ).then(resp => resp.json()).then(data => data);
     })
 }

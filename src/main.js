@@ -55,7 +55,7 @@ const onClickSubmit = () => {
 
 const displayWeatherData = data => {
     switchView();
-    fadeInOut()
+    fadeInOut();
 
     const weather = data.current;
     const forecast = data.forecast.forecastday[0].day;
@@ -75,9 +75,9 @@ const displayWeatherData = data => {
 
 const fadeInOut = () => {
     if (viewElems.mainContainer.style.opacity === '1' || viewElems.mainContainer.style.opacity === '') {
-        viewElems.mainContainer.style.opacity = '0'
+        viewElems.mainContainer.style.opacity = '0';
     } else {
-        viewElems.mainContainer.style.opacity = '1'
+        viewElems.mainContainer.style.opacity = '1';
     }
 }
 
@@ -92,12 +92,12 @@ const switchView = () => {
 }
 
 const returnToSearch = () => {
-    fadeInOut()
+    fadeInOut();
 
     setTimeout(() => {
         switchView();
-        fadeInOut()
+        fadeInOut();
     }, 500);
 }
 
-document.addEventListener('DOMContentLoaded', initializeApp)
+document.addEventListener('DOMContentLoaded', initializeApp);
