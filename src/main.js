@@ -26,13 +26,17 @@ class WeatherApp {
     handleSubmit = () => {
         if (event.type === 'click' || event.key === 'Enter') {
             this.fadeInOut();
-            let query = this.viewElems.searchInput.value; 
+            let query = this.viewElems.searchInput.value;
             getWeatherByCity(query).then(data => {
                 this.displayWeatherData(data);
                 this.viewElems.searchInput.style.borderColor = 'black';
+                this.viewElems.errorInput.innerText = '';
+                this.viewElems.searchInput.value = '';
             }).catch(() => {
                 this.fadeInOut();
                 this.viewElems.searchInput.style.borderColor = 'red';
+                this.viewElems.errorInput.innerText = 'Błędna Nazwa!';
+                this.viewElems.searchInput.value = '';
             })
         }
     }
